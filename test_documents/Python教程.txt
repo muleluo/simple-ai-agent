@@ -1,0 +1,68 @@
+Python 编程语言简介
+
+Python 是什么？
+Python 是一种高级编程语言，由 Guido van Rossum 于 1991 年创建。Python 的设计哲学强调代码的可读性和简洁的语法（尤其是使用空格缩进划分代码块）。
+
+Python 的特点
+1. 简单易学：Python 的语法简洁清晰，接近自然语言，非常适合初学者。
+2. 开源免费：Python 是开源的，任何人都可以免费使用和分发。
+3. 跨平台：Python 可以在 Windows、Linux、macOS 等多种操作系统上运行。
+4. 丰富的库：Python 拥有大量的标准库和第三方库，涵盖了各种应用领域。
+5. 面向对象：Python 支持面向对象编程，也支持函数式编程和过程式编程。
+
+如何定义函数？
+在 Python 中，使用 def 关键字定义函数：
+
+def hello(name):
+    print(f"你好，{name}！")
+
+调用函数：
+hello("小明")
+
+数据类型
+Python 的基本数据类型包括：
+- 整数（int）：如 1, 2, 100
+- 浮点数（float）：如 3.14, 2.5
+- 字符串（str）：如 "hello", 'world'
+- 布尔值（bool）：True 或 False
+- 列表（list）：如 [1, 2, 3]
+- 字典（dict）：如 {"name": "张三", "age": 20}
+
+循环语句
+Python 支持 for 和 while 两种循环：
+
+# for 循环
+for i in range(5):
+    print(i)
+
+# while 循环
+count = 0
+while count < 5:
+    print(count)
+    count += 1
+
+条件语句
+使用 if/elif/else 进行条件判断：
+
+age = 18
+if age < 18:
+    print("未成年")
+elif age == 18:
+    print("刚成年")
+else:
+    print("成年人")
+
+常用库
+- NumPy：科学计算
+- Pandas：数据分析
+- Matplotlib：数据可视化
+- Django/Flask：Web 开发
+- TensorFlow/PyTorch：机器学习
+
+Python 适合做什么？
+- Web 开发
+- 数据分析和科学计算
+- 人工智能和机器学习
+- 自动化脚本
+- 游戏开发
+- 网络爬虫

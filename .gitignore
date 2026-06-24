@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.DS_Store
+data/chat_history.json
+data/reminders
+  .json
+data/sessions/
+data/knowledge_base/
