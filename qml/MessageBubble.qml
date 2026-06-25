@@ -33,14 +33,14 @@ Item {
 
         // 背景颜色
         color: {
-            if (isSystem) return "#f1f5f9"  // 系统消息灰色
-            if (isUser) return "#2563eb"     // 用户消息蓝色
-            return "#ffffff"                 // AI 消息白色
+            if (isSystem) return "#3C3937"       // 系统消息深灰
+            if (isUser) return "#78350F"         // 用户消息深琥珀
+            return "#292524"                     // AI 消息深暖灰
         }
 
         // 边框
         border.width: isUser || isSystem ? 0 : 1
-        border.color: "#e2e8f0"
+        border.color: "#44403C"
 
         // 阴影效果（使用 DropShadow）
         layer.enabled: !isSystem
@@ -99,8 +99,8 @@ Item {
                 font.pixelSize: 11
                 font.weight: Font.Medium
                 color: {
-                    if (isUser) return "rgba(255, 255, 255, 0.8)"
-                    return "#64748b"
+                    if (isUser) return "rgba(255, 255, 255, 0.7)"
+                    return "#A8A29E"  // 次要文字色
                 }
                 Layout.fillWidth: true
             }
@@ -110,7 +110,7 @@ Item {
                 id: messageText
                 text: messageData.content
                 font.pixelSize: 14
-                color: isUser ? "white" : "#1e293b"
+                color: isUser ? "#FAFAF9" : "#FAFAF9"  // 主文字色
                 wrapMode: Text.Wrap
                 textFormat: Text.PlainText
                 Layout.fillWidth: true
@@ -123,8 +123,8 @@ Item {
                 text: messageData.timestamp
                 font.pixelSize: 10
                 color: {
-                    if (isUser) return "rgba(255, 255, 255, 0.6)"
-                    return "#94a3b8"
+                    if (isUser) return "rgba(255, 255, 255, 0.5)"
+                    return "#78716C"  // 更暗的次要色
                 }
                 Layout.alignment: Qt.AlignRight
             }

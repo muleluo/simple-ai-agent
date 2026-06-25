@@ -10,15 +10,18 @@ ApplicationWindow {
     visible: true
     title: "AI 桌面助手"
 
-    // 全局配色方案（无 emoji）
-    property color primaryColor: "#2563eb"      // 主色调（蓝）
-    property color surfaceColor: "#ffffff"       // 表面白色
-    property color backgroundColor: "#f8fafc"    // 背景浅灰
-    property color borderColor: "#e2e8f0"        // 边框颜色
-    property color textPrimary: "#1e293b"        // 主文字
-    property color textSecondary: "#64748b"      // 次要文字
-    property color hoverColor: "#f1f5f9"         // 悬停背景
-    property color selectedColor: "#dbeafe"      // 选中背景
+    // 深夜工作台配色方案 - 温暖专注
+    property color primaryColor: "#F59E0B"      // 主色调（琥珀）
+    property color primaryHover: "#FBBF24"      // 悬停琥珀
+    property color surfaceColor: "#292524"       // 表面深暖灰
+    property color backgroundColor: "#1C1917"    // 背景最深暖灰
+    property color chatAreaBg: "#231F1E"         // 聊天区背景（稍亮）
+    property color borderColor: "#44403C"        // 边框暖灰
+    property color textPrimary: "#FAFAF9"        // 主文字（暖白）
+    property color textSecondary: "#A8A29E"      // 次要文字（灰）
+    property color hoverColor: "#3C3937"         // 悬停背景
+    property color selectedColor: "#44403C"      // 选中背景
+    property color userBubble: "#78350F"         // 用户气泡深琥珀
 
     // 动画时长
     property int animationDuration: 200
@@ -76,21 +79,21 @@ ApplicationWindow {
                     }
 
                     background: Rectangle {
-                        color: newChatButton.pressed ? "#1d4ed8" : primaryColor
+                        color: newChatButton.pressed ? "#D97706" : primaryColor
                         radius: 8
 
                         Behavior on color {
                             ColorAnimation { duration: animationDuration }
                         }
 
-                        // 按钮阴影
+                        // 按钮阴影带微光
                         layer.enabled: true
                         layer.effect: DropShadow {
                             horizontalOffset: 0
                             verticalOffset: 2
                             radius: 12
                             samples: 17
-                            color: "#20000000"
+                            color: "#40F59E0B"  // 琥珀色微光
                             transparentBorder: true
                         }
 
@@ -99,7 +102,7 @@ ApplicationWindow {
                             anchors.fill: parent
                             radius: parent.radius
                             color: "#ffffff"
-                            opacity: newChatButton.isHovered ? 0.15 : 0
+                            opacity: newChatButton.isHovered ? 0.1 : 0
 
                             Behavior on opacity {
                                 NumberAnimation { duration: animationDuration }
@@ -158,7 +161,7 @@ ApplicationWindow {
                             }
                             radius: 8
 
-                            // 选中指示器
+                            // 选中指示器（带微光）
                             Rectangle {
                                 visible: model.isSelected
                                 anchors.left: parent.left
@@ -167,6 +170,17 @@ ApplicationWindow {
                                 height: parent.height * 0.6
                                 radius: 2
                                 color: primaryColor
+
+                                // 微光效果
+                                layer.enabled: true
+                                layer.effect: DropShadow {
+                                    horizontalOffset: 0
+                                    verticalOffset: 0
+                                    radius: 8
+                                    samples: 17
+                                    color: "#60F59E0B"
+                                    transparentBorder: true
+                                }
                             }
 
                             Behavior on color {
@@ -230,7 +244,7 @@ ApplicationWindow {
         Rectangle {
             id: chatArea
             SplitView.fillWidth: true
-            color: backgroundColor
+            color: chatAreaBg
 
             ColumnLayout {
                 anchors.fill: parent
@@ -383,11 +397,14 @@ ApplicationWindow {
                                 selectByMouse: true
 
                                 background: Rectangle {
-                                    color: inputArea.focus ? hoverColor : "transparent"
+                                    color: inputArea.focus ? "#2C2725" : "transparent"
                                     radius: 6
                                     border.width: inputArea.focus ? 2 : 0
                                     border.color: primaryColor
                                     Behavior on color {
+                                        ColorAnimation { duration: animationDuration }
+                                    }
+                                    Behavior on border.color {
                                         ColorAnimation { duration: animationDuration }
                                     }
                                 }
@@ -512,7 +529,7 @@ ApplicationWindow {
                                 background: Rectangle {
                                     color: {
                                         if (!sendButton.enabled) return borderColor
-                                        if (sendButton.pressed) return "#1d4ed8"
+                                        if (sendButton.pressed) return "#D97706"
                                         return primaryColor
                                     }
                                     radius: 6
@@ -527,7 +544,7 @@ ApplicationWindow {
                                         verticalOffset: 2
                                         radius: sendButton.isHovered ? 16 : 12
                                         samples: 17
-                                        color: sendButton.isHovered ? "#4D2563eb" : "#262563eb"
+                                        color: sendButton.isHovered ? "#60F59E0B" : "#40F59E0B"  // 琥珀微光
                                         transparentBorder: true
                                     }
 
